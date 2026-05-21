@@ -1,0 +1,37 @@
+using UnityEngine;
+
+public class ItemManager : MonoBehaviour
+{
+    public static ItemManager instance;
+    public int coins;
+    
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        Reset();
+    }
+
+    private void Reset()
+    {
+        coins = 0;
+    }
+
+
+    public void AddCoin(int amount = 1)
+    {
+        coins += amount;
+    }
+
+
+}
