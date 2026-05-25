@@ -1,10 +1,11 @@
 using UnityEngine;
 
+
 public class CollectablesBase : MonoBehaviour
 {
 
     public string playertag = "Player";
-
+    public ItemManager itemManager;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,6 +27,7 @@ public class CollectablesBase : MonoBehaviour
 
     protected virtual void OnCollect()
     {
+        itemManager.AddCoin(1);
     }
 
 

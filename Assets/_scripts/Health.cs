@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -5,7 +6,7 @@ public class Health : MonoBehaviour
     public int startlife = 10;
     private int _currentlife;
     private bool _isAlive;
-
+    public Action onDeath;
     
     private void Awake()
     {
@@ -33,7 +34,11 @@ public class Health : MonoBehaviour
     private void Death()
     {
         _isAlive = false;
-        Destroy(gameObject);
+        Destroy(gameObject, 1f);
+
+        onDeath?.Invoke();
+
+
     }
 
 

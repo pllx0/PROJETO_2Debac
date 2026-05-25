@@ -1,11 +1,12 @@
 using UnityEngine;
-
+using TMPro;
 public class ItemManager : SingleTon<ItemManager>
 {
     
     public int coins;
-    
-    
+    public TextMeshProUGUI count;
+
+    public static object Instance { get; internal set; }
 
     private void Start()
     {
@@ -18,10 +19,11 @@ public class ItemManager : SingleTon<ItemManager>
     }
 
 
-    public void AddCoin(int amount = 1)
+    public void AddCoin(int amount = 0)
     {
         coins += amount;
+        count.text = coins.ToString();
     }
 
-
+    
 }

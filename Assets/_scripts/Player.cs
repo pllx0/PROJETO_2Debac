@@ -14,7 +14,8 @@ public class Player : MonoBehaviour
     public string runbool = "running";
     public string sprintbool = "sprint";
     public string jumpbool = "jump";
-    
+    public string deathanimation = "Death";
+    public Health _health;
 
     void Update()
     {
@@ -22,8 +23,18 @@ public class Player : MonoBehaviour
         movementhorizontal();
         
     }
-
-
+    private void Awake()
+    {
+        if (_health != null)
+        {
+            _health.onDeath += onPlayerDeath;
+        }
+    }
+    private void onPlayerDeath()
+    { 
+            _health.onDeath -= onPlayerDeath;
+        animator.SetTrigger(deathanimation);
+    }
 
     private void movementhorizontal()
     {
