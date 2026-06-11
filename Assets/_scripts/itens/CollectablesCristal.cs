@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class CollectablesCoin : CollectablesBase
+public class CollectablesCristal : CollectablesBase
 {
-
 
     public string playertag = "Player";
 
@@ -10,16 +9,15 @@ public class CollectablesCoin : CollectablesBase
     {
         if (collision.CompareTag(playertag))
         {
-            CollectCoin();
+            CollectCristal();
         }
     }
 
 
-    protected override void CollectCoin()
+    protected override void CollectCristal()
     {
-        base.CollectCoin();
+        base.CollectCristal();
       
-
     }
 
 

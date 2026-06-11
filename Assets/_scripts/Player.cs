@@ -4,19 +4,11 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public SO_playerconfig playerconfig;
     public Rigidbody2D rb;
-    public Vector2 friction = new Vector2(.1f, 0);
-    public float speed;
-    public float runspeed;
-    
-    private float currentespeed;
-    public Animator animator;
-    public string runbool = "running";
-    public string sprintbool = "sprint";
-    public string jumpbool = "jump";
-    public string deathanimation = "Death";
     public Health _health;
-
+    public Animator animator;
+    private float currentespeed;
     void Update()
     {
         movementhvertical();
@@ -33,46 +25,46 @@ public class Player : MonoBehaviour
     private void onPlayerDeath()
     { 
             _health.onDeath -= onPlayerDeath;
-        animator.SetTrigger(deathanimation);
+        animator.SetTrigger(playerconfig.deathanimation);
     }
 
     private void movementhorizontal()
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            currentespeed = runspeed;
-            animator.SetBool(sprintbool, true);
+            currentespeed = playerconfig.runspeed;
+            animator.SetBool(playerconfig.sprintbool, true);
         }
         else
         {
-            currentespeed = speed;
-            animator.SetBool(sprintbool, false); 
+            currentespeed = playerconfig.speed;
+            animator.SetBool(playerconfig.sprintbool, false); 
         }
 
         if (Input.GetAxis("Horizontal") > 0)
         {
             rb.linearVelocity = new Vector2(currentespeed, rb.linearVelocity.y);
             rb.transform.localScale = new Vector3(1, 1, 1);
-            animator.SetBool(runbool, true);
+            animator.SetBool(playerconfig.runbool, true);
         }
         else if (Input.GetAxis("Horizontal") < 0)
         {
             rb.linearVelocity = new Vector2(-currentespeed, rb.linearVelocity.y);
             rb.transform.localScale = new Vector3(-1, 1, 1);
-            animator.SetBool(runbool, true);
+            animator.SetBool(playerconfig.runbool, true);
         }
         else
         {
-            animator.SetBool(runbool, false);
+            animator.SetBool(playerconfig.runbool, false);
         }
 
         if (rb.linearVelocity.x > 0)
         {
-            rb.linearVelocity -= friction;
+            rb.linearVelocity -= playerconfig.friction;
         }
         else if (rb.linearVelocity.x < 0)
         {
-            rb.linearVelocity += friction;
+            rb.linearVelocity += playerconfig.friction;
         }
 
         
@@ -81,12 +73,12 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.linearVelocity = Vector2.up * speed;
-            animator.SetBool(jumpbool, true);
+            rb.linearVelocity = Vector2.up * playerconfig.speed;
+            animator.SetBool(playerconfig.jumpbool, true);
         }
         else
         {
-            animator.SetBool(jumpbool, false);
+            animator.SetBool(playerconfig.jumpbool, false);
         }
 
 

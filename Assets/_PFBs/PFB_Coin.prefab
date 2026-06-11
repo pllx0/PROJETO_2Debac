@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectablesCoin
   playertag: Player
+  itemManager: {fileID: 0}
 --- !u!58 &5575076139663776969
 CircleCollider2D:
   m_ObjectHideFlags: 0

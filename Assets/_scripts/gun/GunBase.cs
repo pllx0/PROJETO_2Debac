@@ -43,4 +43,6 @@ public class GunBase : MonoBehaviour
         newProjectile.side = playerside.localScale.x;
 
     }
+
+    
 }

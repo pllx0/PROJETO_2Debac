@@ -8,7 +8,7 @@ public class EnemyBase : MonoBehaviour
     public Health health;
     public string deathanimation = "Death";
     public string hitanimation = "Attack";
-
+    
 
 
 

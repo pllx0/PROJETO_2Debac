@@ -3,7 +3,8 @@ using TMPro;
 public class ItemManager : SingleTon<ItemManager>
 {
     
-    public int coins;
+    public SOint coins;
+    public SOint cristals;
     public TextMeshProUGUI count;
 
     public static object Instance { get; internal set; }
@@ -15,15 +16,19 @@ public class ItemManager : SingleTon<ItemManager>
 
     private void Reset()
     {
-        coins = 0;
+        coins.value = 0;
+        cristals.value = 0;
     }
 
 
     public void AddCoin(int amount = 0)
     {
-        coins += amount;
-        count.text = coins.ToString();
+        coins.value += amount;
     }
 
-    
+    public void AddCristal(int amount = 0)
+    {
+        cristals.value += amount;
+    }
+
 }
